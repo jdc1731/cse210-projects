@@ -1,3 +1,5 @@
+//I added a text file which contains the scriptures to memorize. These scriptures are then pulled into the program using a random number generator to select a random scripture from the list. 
+
 using System;
 using System.Collections.Generic;
 using System.IO;
