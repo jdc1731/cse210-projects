@@ -1,3 +1,4 @@
+//For full credit I use a JSON file to save the entries to.
 using System;
 
 class Program
