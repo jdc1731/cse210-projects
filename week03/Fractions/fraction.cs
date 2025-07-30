@@ -33,7 +33,7 @@ public class Fractions
     {
         denominator = bottom;
     }
-   public string GetFractionString()
+    public string GetFractionString()
     {
         return $"{numerator}/{denominator}";
     }

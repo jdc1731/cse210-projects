@@ -1,6 +1,6 @@
 public class Entry
 {
-   public string Date { get; set; }
+    public string Date { get; set; }
     public string Prompt { get; set; }
     public string Response { get; set; }
     public void Display()
@@ -10,4 +10,4 @@ public class Entry
         Console.WriteLine($"Response: {Response}");
     }
 
-} 
+}

@@ -9,7 +9,7 @@ class Program
 
         List<int> numbers = new List<int>();
         int number;
-        
+
         do
         {
             Console.Write("Enter a number: ");
@@ -18,7 +18,7 @@ class Program
 
             if (number != 0)
             {
-               numbers.Add(number);
+                numbers.Add(number);
             }
         } while (number != 0);
 
@@ -32,7 +32,7 @@ class Program
 
         int max = numbers[0];
 
-         foreach (int num in numbers)
+        foreach (int num in numbers)
         {
             if (num > max)
             {

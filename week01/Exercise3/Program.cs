@@ -8,10 +8,10 @@ class Program
         Random randomNumber = new Random();
         int magicNumber = randomNumber.Next(1, 101);
 
-        
+
         int guess;
 
-    do
+        do
         {
             Console.Write("What is your guess? ");
             string guessInput = Console.ReadLine();
@@ -27,8 +27,8 @@ class Program
                 Console.WriteLine("Lower");
             }
         } while (guess != magicNumber);
-     Console.WriteLine("You guessed it!");
-        
+        Console.WriteLine("You guessed it!");
+
 
     }
 }

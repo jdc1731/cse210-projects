@@ -29,8 +29,8 @@ class Program
         {
             job.DisplayJobDetails();
         }
-        
+
     }
 
-    
-    }
+
+}

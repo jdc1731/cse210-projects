@@ -41,20 +41,20 @@ class Program
         Scripture selectedScripture = scriptures[random.Next(scriptures.Count)];
 
         while (!selectedScripture.IsCompletelyHidden())
-{
-    Console.Clear();
-    Console.WriteLine(selectedScripture.GetDisplayText());
-    Console.WriteLine("\nPress Enter to hide words or type 'quit' to exit:");
-    string input = Console.ReadLine();
-    if (input.ToLower() == "quit")
-        break;
+        {
+            Console.Clear();
+            Console.WriteLine(selectedScripture.GetDisplayText());
+            Console.WriteLine("\nPress Enter to hide words or type 'quit' to exit:");
+            string input = Console.ReadLine();
+            if (input.ToLower() == "quit")
+                break;
 
-    selectedScripture.HideRandomWords(3); // or whatever number you want
-}
+            selectedScripture.HideRandomWords(3); // or whatever number you want
+        }
 
-    Console.Clear();
-    Console.WriteLine(selectedScripture.GetDisplayText());
-    Console.WriteLine("\nAll words are hidden. Good job!");
+        Console.Clear();
+        Console.WriteLine(selectedScripture.GetDisplayText());
+        Console.WriteLine("\nAll words are hidden. Good job!");
 
     }
 }
