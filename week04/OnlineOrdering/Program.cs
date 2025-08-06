@@ -11,7 +11,7 @@ class Program
         Address address2 = new Address("456 Elm St", "Shelbyville", "IL", "USA");
 
         Customer customer1 = new Customer("John Doe", address1);
-        Customer customer2 = new Customer("Jane Smith", address2);
+        Customer customer2 = new Customer("Jane Smith", address2);ihatethis
 
         Product product1 = new Product("Laptop", "001", 999.99, 1);
         Product product2 = new Product("Smartphone", "002", 499.99, 2);
