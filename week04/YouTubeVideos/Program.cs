@@ -44,6 +44,5 @@ class Program
         {
             Console.WriteLine($"Video: {video.GetTitle()} by {video.GetAuthor()} has {video.GetNumberOfComments()} comments.");
         }
-
     }
 }
