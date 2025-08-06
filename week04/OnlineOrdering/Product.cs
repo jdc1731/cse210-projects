@@ -22,4 +22,12 @@ public class Product
         return _price * _quantity;
     }
 
+    public string GetName()
+    {
+        return _name;
+    }
+    public string GetProductId()
+    {
+        return _productId;
+    }
 }
