@@ -1,17 +1,17 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Mindfulness;
 
 public class ListingActivity : Activity
 {
-    private int _count;
     private List<string> _prompts;
 
     public ListingActivity(string activityName, string description, int duration, List<string> prompts)
-    : base(activityName, description, duration)
+        : base(activityName, description, duration)
     {
         _prompts = prompts;
-        _count = 0;
     }
 
     public void Run()
@@ -20,26 +20,36 @@ public class ListingActivity : Activity
 
         Random rand = new Random();
         string prompt = _prompts[rand.Next(_prompts.Count)];
+        Console.WriteLine(prompt);
 
-        Console.WriteLine("You have 5 seconds to think about your response.");
+        Console.WriteLine("You will have a few seconds to think about this prompt.");
         ShowCountDown(5);
 
         Console.WriteLine("Start listing items. Press Enter after each item:");
 
-        DateTime startTime = DateTime.Now;
-        _count = 0;
+        int count = 0;
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
 
-        while ((DateTime.Now - startTime).TotalSeconds < _duration)
-    {
-        string input = Console.ReadLine();
-        if (!string.IsNullOrWhiteSpace(input))
+        while (stopwatch.Elapsed.TotalSeconds < _duration)
         {
-            _count++;
+            if (Console.KeyAvailable)
+            {
+                string input = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(input))
+                {
+                    count++;
+                }
+            }
+            else
+            {
+                System.Threading.Thread.Sleep(100);
+            }
         }
-    }
 
-        Console.WriteLine($"You listed {_count} items.");
+        stopwatch.Stop();
 
+        Console.WriteLine($"You listed {count} items.");
         DisplayEndingMessage();
     }
 }

@@ -32,7 +32,12 @@ class Program
             if (choice == "4")
             {
                 keepRunning = false;
-                continue;
+                Console.WriteLine("Goodbye! Thanks for practicing mindfulness.");
+                Console.WriteLine($"Session Summary:");
+                Console.WriteLine($"Breathing activities completed: {breathingCount}");
+                Console.WriteLine($"Reflection activities completed: {reflectionCount}");
+                Console.WriteLine($"Listing activities completed: {listingCount}");
+                break;
             }
 
             Console.Write("Enter duration in seconds: ");
@@ -43,7 +48,7 @@ class Program
             if (!validDuration || duration <= 0)
             {
                 Console.WriteLine("Invalid duration. Please enter a positive number.");
-                continue;  // Restart the loop if duration invalid
+                continue;
             }
 
             if (choice == "1")
@@ -53,7 +58,7 @@ class Program
                     "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.",
                     duration);
                 breathingActivity.Run();
-                breathingCount++; // Increment count here
+                breathingCount++;
             }
             else if (choice == "2")
             {
@@ -88,12 +93,6 @@ class Program
                 Console.WriteLine("Invalid choice. Please try again.");
             }
         }
-
-        Console.WriteLine("Goodbye! Thanks for practicing mindfulness.");
-        Console.WriteLine("Session Summary:");
-        Console.WriteLine($"Breathing activities completed: {breathingCount}");
-        Console.WriteLine($"Reflection activities completed: {reflectionCount}");
-        Console.WriteLine($"Listing activities completed: {listingCount}");
     }
 }
 

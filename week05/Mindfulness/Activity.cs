@@ -37,14 +37,26 @@ public class Activity
         Console.WriteLine("Thank you for participating!");
     }
         public void ShowSpinner(int seconds)
-    { 
-        for (int i = 0; i < seconds; i++)
-        {
-            Console.Write(".");
-            System.Threading.Thread.Sleep(1000);
-        }
-        Console.WriteLine();
+{
+    string[] spinnerChars = { "|", "/", "-", "\\" };
+    Console.Write(" "); 
+
+    DateTime startTime = DateTime.Now;
+    DateTime endTime = startTime.AddSeconds(seconds);
+
+    int spinnerIndex = 0;
+
+    while (DateTime.Now < endTime)
+    {
+        Console.Write(spinnerChars[spinnerIndex]);
+        Thread.Sleep(250); 
+
+        Console.Write("\b \b");
+
+        spinnerIndex = (spinnerIndex + 1) % spinnerChars.Length;
     }
+}
+
     public void ShowCountDown(int seconds)
     {
         for (int i = seconds; i > 0; i--)
