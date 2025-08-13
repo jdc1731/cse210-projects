@@ -8,6 +8,8 @@ public class GoalManager
 {
     private List<Goal> _goals = new();
     private int _score = 0;
+    private int GetLevel() => 1 + (_score / 500); 
+
 
     public void Start()
     {
@@ -17,13 +19,12 @@ public class GoalManager
             Console.WriteLine();
             DisplayPlayerInfo();
             Console.WriteLine("Menu Options:");
-            Console.WriteLine("  1. Create New Goal");
-            Console.WriteLine("  2. List Goal Names");
-            Console.WriteLine("  3. List Goal Details");
-            Console.WriteLine("  4. Record Event");
-            Console.WriteLine("  5. Save Goals");
-            Console.WriteLine("  6. Load Goals");
-            Console.WriteLine("  7. Quit");
+            Console.WriteLine("  1. Create Goal");
+            Console.WriteLine("  2. List Goals");
+            Console.WriteLine("  3. Save Goals");
+            Console.WriteLine("  4. Load Goals");
+            Console.WriteLine("  5. Record Event");
+            Console.WriteLine("  6. Quit");
             Console.Write("Select a choice from the menu: ");
 
             string choice = Console.ReadLine()?.Trim() ?? "";
@@ -31,12 +32,11 @@ public class GoalManager
             switch (choice)
             {
                 case "1": CreateGoal(); break;
-                case "2": ListGoalNames(); break;
-                case "3": ListGoalDetails(); break;
-                case "4": RecordEvent(); break;
-                case "5": SaveGoals(); break;
-                case "6": LoadGoals(); break;
-                case "7": running = false; break;
+                case "2": ListGoals(); break;
+                case "3": SaveGoals(); break;
+                case "4": LoadGoals(); break;
+                case "5": RecordEvent(); break;
+                case "6": running = false; break;
                 default: Console.WriteLine("Invalid option."); break;
             }
         }
@@ -44,7 +44,7 @@ public class GoalManager
 
     public void DisplayPlayerInfo()
     {
-        Console.WriteLine($"You have {_score} points.");
+        Console.WriteLine($"You have {_score} points. Level: {GetLevel()}");
     }
 
     public void ListGoalNames()
@@ -117,7 +117,7 @@ public class GoalManager
             return;
         }
 
-        int earned = _goals[index].RecordEvent(); 
+        int earned = _goals[index].RecordEvent();
         _score += earned;
 
         Console.WriteLine(earned > 0
@@ -131,7 +131,7 @@ public class GoalManager
         string filename = Console.ReadLine() ?? "goals.txt";
 
         using var sw = new StreamWriter(filename);
-        sw.WriteLine(_score); 
+        sw.WriteLine(_score);
         foreach (var g in _goals)
             sw.WriteLine(g.GetStringRepresentation());
 
@@ -158,7 +158,7 @@ public class GoalManager
             string type = p[0];
             string name = p[1];
             string desc = p[2];
-            string pts = p[3]; 
+            string pts = p[3];
 
             switch (type)
             {
@@ -192,4 +192,20 @@ public class GoalManager
             Console.Write("Please enter a valid integer: ");
         }
     }
+    
+    public void ListGoals()
+{
+    if (_goals.Count == 0)
+    {
+        Console.WriteLine("No goals yet.");
+        return;
+    }
+
+    Console.WriteLine("The goals are:");
+    for (int i = 0; i < _goals.Count; i++)
+    {
+        Console.WriteLine($"  {i + 1}. {_goals[i].GetDetailsString()}");
+    }
+}
+
 }
